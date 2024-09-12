@@ -20,12 +20,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ymmc.mycomposeapp.ui.composable.Greeting
+import com.ymmc.mycomposeapp.ui.composable.GreetingImage
 import com.ymmc.mycomposeapp.ui.theme.MyComposeAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        startCompose()
+
+    }
+
+    private fun startCompose() {
         setContent {
             MyComposeAppTheme {
                 Surface(
@@ -33,53 +40,9 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .padding(8.dp),
                     color = MaterialTheme.colorScheme.background) {
-                    Greeting(
-                        name = "Yasmmin",
-                        message = "Welcome to Compose"
-                    )
+                    GreetingImage()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(
-    name: String,
-    modifier: Modifier = Modifier,
-    message: String) {
-    Column (
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier
-    ) {
-        Text(
-            text = "Hello $name!",
-            fontSize = 83.sp,
-            lineHeight = 116.sp,
-            modifier = modifier,
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = message,
-            fontSize = 24.sp,
-            modifier = modifier
-                .padding(16.dp)
-                .align(alignment = Alignment.CenterHorizontally)
-        )
-    }
-
-}
-/**
- * GreetingPreview is only for show how it the app looks like to help
- * with the design. The actual value to be show must be pass in the onCreate
- * function.
- */
-@Preview(
-    showBackground = true,
-    showSystemUi = true )
-@Composable
-fun GreetingPreview() {
-    MyComposeAppTheme {
-        Greeting("Yasmmin", message = "Welcome to Compose")
     }
 }
